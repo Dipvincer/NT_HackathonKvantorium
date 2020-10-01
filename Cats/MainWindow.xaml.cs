@@ -47,9 +47,29 @@ namespace Cats
 
         private async void YourCatButton_Click(object sender, RoutedEventArgs e)
         {
-            MenuButton.Visibility = Visibility.Visible;
-            WelcomePage.Visibility = Visibility.Hidden;
+            MenuButton.Visibility = Visibility.Visible;            
             YourCatPage.Visibility = Visibility.Visible;
+
+            WelcomePage.Visibility = Visibility.Hidden;
+            GaleryPage.Visibility = Visibility.Hidden;
+
+            NowPage.Text = "Личная страничка";
+
+            StoryboardStart("SlideMenuClose");
+
+            await Task.Delay(500);
+            DarkMask.Visibility = Visibility.Hidden;
+        }
+
+        private async void GaleryButton_Click(object sender, RoutedEventArgs e)
+        {
+            MenuButton.Visibility = Visibility.Visible;            
+            GaleryPage.Visibility = Visibility.Visible;
+
+            WelcomePage.Visibility = Visibility.Hidden;
+            YourCatPage.Visibility = Visibility.Hidden;
+
+            NowPage.Text = "Галерея";
 
             StoryboardStart("SlideMenuClose");
 

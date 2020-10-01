@@ -122,6 +122,14 @@ namespace Cats.Pages
                 InputField.Opacity = 0.5;
             }
         }
+
+        private void InputField_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Send_Click(sender, e);
+            }
+        }
     }
 }
 

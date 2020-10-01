@@ -38,7 +38,7 @@
 
         <Grid Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom">
             <Rectangle Height="40" Fill="#858585" VerticalAlignment="Bottom" RadiusX="15" RadiusY="15" Margin="10"/>
-            <TextBox x:Name="InputField" PreviewMouseLeftButtonDown="InputField_PreviewMouseLeftButtonDown" Opacity="0.5" SpellCheck.IsEnabled="True" Language="ru-ru" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25 0 0 0" Foreground="#2b2b2b" FontFamily="Montserrat" FontSize="18" Width="700" MaxWidth="700">
+            <TextBox x:Name="InputField" PreviewMouseLeftButtonDown="InputField_PreviewMouseLeftButtonDown" KeyDown="InputField_KeyDown" Opacity="0.5" SpellCheck.IsEnabled="True" Language="ru-ru" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25 0 0 0" Foreground="#2b2b2b" FontFamily="Montserrat" FontSize="18" Width="700" MaxWidth="700">
                 <TextBox.Text>
                     Написать сообщение
                 </TextBox.Text>
