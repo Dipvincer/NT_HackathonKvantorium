@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -23,6 +24,25 @@ namespace Cats
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void MenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            MenuButton.Visibility = Visibility.Hidden;
+            CloseMenuButton.Visibility = Visibility.Visible;
+
+            DarkMask.Visibility = Visibility.Visible;
+
+            Storyboard storyboardOpen = this.Resources["SlideMenuOpen"] as Storyboard;
+            storyboardOpen.Begin();
+        }
+
+        private void CloseMenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            MenuButton.Visibility = Visibility.Visible;            
+
+            Storyboard storyboardOpen = this.Resources["SlideMenuClose"] as Storyboard;
+            storyboardOpen.Begin();
         }
     }
 }
