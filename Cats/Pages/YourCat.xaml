@@ -1,0 +1,156 @@
+﻿<UserControl x:Class="Cats.Pages.YourCat"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Cats.Pages"
+             mc:Ignorable="d" 
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="750" d:DesignWidth="1200">
+    <UserControl.Resources>
+        <Style BasedOn="{StaticResource {x:Type TextBlock}}"
+           TargetType="TextBlock"
+           x:Key="AboutCat">
+            <Setter Property="FontFamily" Value="Montserrat"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="#a34b45"/>
+            <Setter Property="Margin" Value="10 5 0 0"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" FontFamily="Montserrat Bold" Foreground="#a34b45" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">
+            Твой пушистый
+        </TextBlock>
+        
+        <TextBlock Grid.Row="0" Grid.Column="1" FontFamily="Montserrat Bold" Foreground="#a34b45" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">
+            Комментарии
+        </TextBlock>
+
+        <Grid Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom">
+            <Rectangle Height="40" Fill="#858585" VerticalAlignment="Bottom" RadiusX="15" RadiusY="15" Margin="10"/>
+            <TextBox x:Name="InputField" PreviewMouseLeftButtonDown="InputField_PreviewMouseLeftButtonDown" KeyDown="InputField_KeyDown" Opacity="0.5" SpellCheck.IsEnabled="True" Language="ru-ru" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25 0 0 0" Foreground="#2b2b2b" FontFamily="Montserrat" FontSize="18" Width="700" MaxWidth="700">
+                <TextBox.Text>
+                    Написать сообщение
+                </TextBox.Text>
+            </TextBox>
+            
+            <Button x:Name="Send" Click="Send_Click" HorizontalAlignment="Right" Margin="0 0 10 0" VerticalAlignment="Center" Width="50" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#d4d4d4">
+                <md:PackIcon Kind="Send" Width="25" Height="25" Margin="-5 0 0 0"/>
+            </Button>            
+        </Grid>        
+        
+        <StackPanel x:Name="CommentsField" Grid.Row="1" Grid.Column="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+
+                <Ellipse Width="70" Height="70" Grid.Column="0" Grid.RowSpan="2">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="https://uznayvse.ru/images/celebs/elon-mask_medium.jpg" Stretch="UniformToFill"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+                
+                <TextBlock Grid.Column="1" Style="{StaticResource AboutCat}">Илон Маск</TextBlock>
+
+                <TextBlock Grid.Column="1" Grid.Row="1" Style="{StaticResource AboutCat}" Foreground="#2b2b2b" FontSize="14">
+                    Офигенный кот. У меня был такой. Очень красивый и забавный, люблю таких.
+                </TextBlock>
+            </Grid>
+
+            <Grid Margin="0 10 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+
+                <Ellipse Width="70" Height="70" Grid.Column="0" Grid.RowSpan="2">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="https://cs11.pikabu.ru/post_img/big/2019/08/19/4/1566190808158226752.jpg" Stretch="UniformToFill"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+
+                <TextBlock Grid.Column="1" Style="{StaticResource AboutCat}">Марк Цукерберг</TextBlock>
+
+                <TextBlock Grid.Column="1" Grid.Row="1" Style="{StaticResource AboutCat}" Foreground="#2b2b2b" FontSize="14">
+                    Хахах. Классный кот!!! Имя еще такое необычное. Хочу такого себе. Я очень люблю котов.
+                </TextBlock>
+            </Grid>
+
+            <Grid Margin="0 10 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+
+                <Ellipse Width="70" Height="70" Grid.Column="0" Grid.RowSpan="2">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="https://cdn.forbes.ru/files/presets/900_566/profile/jeff_bezos.jpg__1583666210__84763__vid667939e.jpg" Stretch="UniformToFill"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+
+                <TextBlock Grid.Column="1" Style="{StaticResource AboutCat}">Джефф Безос</TextBlock>
+
+                <TextBlock Grid.Column="1" Grid.Row="1" TextWrapping="WrapWithOverflow" Style="{StaticResource AboutCat}" Foreground="#2b2b2b" FontSize="14">
+                    Сибирские коты очень специфичны. У них длинная шерсть и поэтому их надо довольно часто вычесывать. Но выглядит шикарно!
+                </TextBlock>
+            </Grid>
+        </StackPanel>
+        
+        
+
+        <!--        
+        <Button Grid.Row="0" Grid.Column="0"  Width="50" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#a34b45">
+            <md:PackIcon Kind="Plus" Width="20" Height="20"/>
+        </Button>
+        -->            
+        
+        <StackPanel Grid.Column="0" Grid.Row="1">
+            <Image x:Name="CatsPhoto" Margin="10"/>
+            
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource AboutCat}" Foreground="#a34b45">Имя кота:</TextBlock>
+                <TextBlock x:Name="CatsName" Style="{StaticResource AboutCat}" Foreground="#2b2b2b"></TextBlock>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource AboutCat}" Foreground="#a34b45">Порода кота:</TextBlock>
+                <TextBlock x:Name="CatsBreed" Style="{StaticResource AboutCat}" Foreground="#2b2b2b"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource AboutCat}" Foreground="#a34b45">Возраст:</TextBlock>
+                <TextBlock x:Name="CatsAge" Style="{StaticResource AboutCat}" Foreground="#2b2b2b"/>
+            </StackPanel>
+
+            <TextBlock Style="{StaticResource AboutCat}" HorizontalAlignment="Center" Foreground="#a34b45">Описание:</TextBlock>
+            <TextBlock x:Name="CatsDescriptions" Style="{StaticResource AboutCat}" TextWrapping="Wrap" Foreground="#2b2b2b"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

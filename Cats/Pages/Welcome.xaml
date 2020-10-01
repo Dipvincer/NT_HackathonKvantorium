@@ -10,12 +10,11 @@
     <StackPanel>
         <TextBlock FontFamily="Montserra" Foreground="#a34b45" FontSize="32" TextWrapping="Wrap" MaxWidth="800" HorizontalAlignment="Center" Margin="0 150 0 0">Cats</TextBlock>
         
-        <TextBlock FontFamily="Montserra" Foreground="#2b2b2b" FontSize="24" TextWrapping="Wrap" MaxWidth="800" HorizontalAlignment="Center" >
-            Не секрет, что у котиков есть уже свои аккаунты в Инстаграмм. А некоторые человеческие аккаунты тоже ведут котики, просто это тайна. Но пушистые хотят еще и сайт, чтобы рассказать о себе больше.
+        <TextBlock FontFamily="Montserra" Foreground="#2b2b2b" FontSize="24" TextWrapping="Wrap" MaxWidth="800" HorizontalAlignment="Center" Margin="10">
+            Не секрет, что у котиков есть уже свои аккаунты в Инстаграмм. А некоторые человеческие аккаунты тоже ведут котики, просто это тайна. Но теперь у пушистых есть платформа, на котрой они моугт рассказать о себе больше.
         </TextBlock>
 
-        <Image Width="400" Margin="10" Source="https://avatars.mds.yandex.net/get-zen_doc/1680084/pub_5d3599116f5f6f00add74a04_5d3599dece44a000b9d37220/scale_1200"/>
+        <Image Height="300" gif:ImageBehavior.AnimatedSource="https://i.gifer.com/6mz.gif"/>
 
-        <Button></Button>
     </StackPanel>
 </UserControl>

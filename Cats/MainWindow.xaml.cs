@@ -30,19 +30,61 @@ namespace Cats
         {
             MenuButton.Visibility = Visibility.Hidden;
             CloseMenuButton.Visibility = Visibility.Visible;
-
             DarkMask.Visibility = Visibility.Visible;
 
-            Storyboard storyboardOpen = this.Resources["SlideMenuOpen"] as Storyboard;
-            storyboardOpen.Begin();
+            StoryboardStart("SlideMenuOpen");
         }
 
-        private void CloseMenuButton_Click(object sender, RoutedEventArgs e)
+        private async void CloseMenuButton_Click(object sender, RoutedEventArgs e)
+        {        
+            MenuButton.Visibility = Visibility.Visible;
+
+            StoryboardStart("SlideMenuClose");
+
+            await Task.Delay(500);
+            DarkMask.Visibility = Visibility.Hidden;
+        }
+
+        private async void YourCatButton_Click(object sender, RoutedEventArgs e)
         {
             MenuButton.Visibility = Visibility.Visible;            
+            YourCatPage.Visibility = Visibility.Visible;
 
-            Storyboard storyboardOpen = this.Resources["SlideMenuClose"] as Storyboard;
-            storyboardOpen.Begin();
+            WelcomePage.Visibility = Visibility.Hidden;
+            GaleryPage.Visibility = Visibility.Hidden;
+
+            NowPage.Text = "Личная страничка";
+
+            StoryboardStart("SlideMenuClose");
+
+            await Task.Delay(500);
+            DarkMask.Visibility = Visibility.Hidden;
+        }
+
+        private async void GaleryButton_Click(object sender, RoutedEventArgs e)
+        {
+            MenuButton.Visibility = Visibility.Visible;            
+            GaleryPage.Visibility = Visibility.Visible;
+
+            WelcomePage.Visibility = Visibility.Hidden;
+            YourCatPage.Visibility = Visibility.Hidden;
+
+            NowPage.Text = "Галерея";
+
+            StoryboardStart("SlideMenuClose");
+
+            await Task.Delay(500);
+            DarkMask.Visibility = Visibility.Hidden;
+        }
+
+        /// <summary>
+        /// Реализует запуск указанной анимации
+        /// </summary>
+        /// <param name="name">Название анимации</param>
+        private void StoryboardStart(string name)
+        {
+            Storyboard storyboardStart = this.Resources[name] as Storyboard;
+            storyboardStart.Begin();
         }
     }
 }
