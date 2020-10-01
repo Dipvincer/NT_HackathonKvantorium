@@ -30,19 +30,41 @@ namespace Cats
         {
             MenuButton.Visibility = Visibility.Hidden;
             CloseMenuButton.Visibility = Visibility.Visible;
-
             DarkMask.Visibility = Visibility.Visible;
 
-            Storyboard storyboardOpen = this.Resources["SlideMenuOpen"] as Storyboard;
-            storyboardOpen.Begin();
+            StoryboardStart("SlideMenuOpen");
         }
 
-        private void CloseMenuButton_Click(object sender, RoutedEventArgs e)
-        {
-            MenuButton.Visibility = Visibility.Visible;            
+        private async void CloseMenuButton_Click(object sender, RoutedEventArgs e)
+        {        
+            MenuButton.Visibility = Visibility.Visible;
 
-            Storyboard storyboardOpen = this.Resources["SlideMenuClose"] as Storyboard;
-            storyboardOpen.Begin();
+            StoryboardStart("SlideMenuClose");
+
+            await Task.Delay(500);
+            DarkMask.Visibility = Visibility.Hidden;
+        }
+
+        private async void YourCatButton_Click(object sender, RoutedEventArgs e)
+        {
+            MenuButton.Visibility = Visibility.Visible;
+            WelcomePage.Visibility = Visibility.Hidden;
+            YourCatPage.Visibility = Visibility.Visible;
+
+            StoryboardStart("SlideMenuClose");
+
+            await Task.Delay(500);
+            DarkMask.Visibility = Visibility.Hidden;
+        }
+
+        /// <summary>
+        /// Реализует запуск указанной анимации
+        /// </summary>
+        /// <param name="name">Название анимации</param>
+        private void StoryboardStart(string name)
+        {
+            Storyboard storyboardStart = this.Resources[name] as Storyboard;
+            storyboardStart.Begin();
         }
     }
 }

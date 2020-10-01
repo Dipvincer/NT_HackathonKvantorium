@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:Cats"
         xmlns:pages="clr-namespace:Cats.Pages"
         mc:Ignorable="d"
-        Title="Cats" Height="800" Width="1200" Icon="Materials/Icons/cat_hungry.png" MinHeight="500" MinWidth="800">
+        Title="Cats" Height="800" Width="1200" Icon="Materials/Icons/cat_hungry.png" MinHeight="800" MinWidth="1200">
     <Window.Resources>
         <Style BasedOn="{StaticResource {x:Type Button}}"
            TargetType="Button"
@@ -84,7 +84,8 @@
             Добро пожаловать в Cats!
         </TextBlock>
 
-        <pages:Welcome Grid.ColumnSpan="2" Grid.Row="1"></pages:Welcome>
+        <pages:YourCat x:Name="YourCatPage" Visibility="Hidden" Grid.ColumnSpan="2" Grid.Row="1"></pages:YourCat>
+        <pages:Welcome x:Name="WelcomePage" Grid.ColumnSpan="2" Grid.Row="1"></pages:Welcome>        
 
         <Grid x:Name="DarkMask" Grid.ColumnSpan="2" Grid.RowSpan="2" Background="#2b2b2b" Opacity="0" Visibility="Hidden"/>        
 
@@ -123,7 +124,7 @@
             </Button>
 
             <StackPanel Grid.Row="1">
-                <Button Style="{StaticResource MenuButton}">Твой котик</Button>
+                <Button x:Name="YourCatButton" Click="YourCatButton_Click" Style="{StaticResource MenuButton}">Твой котик</Button>
                 <Button Style="{StaticResource MenuButton}">Галерея</Button>
                 <Button Style="{StaticResource MenuButton}">Полезное</Button>
             </StackPanel>
