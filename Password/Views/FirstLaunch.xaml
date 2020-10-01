@@ -1,0 +1,41 @@
+﻿<Page
+	x:Class="Password.Views.FirstLaunch"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:Password.Views"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+		<StackPanel Orientation="Vertical" VerticalAlignment="Center">
+			<TextBlock Text="Здравствуйте, настройте менеджер паролей" FontSize="36" Margin="0,0,0,25" TextAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Введите пароль доступа" Margin="0,0,0,10"
+					   TextWrapping="Wrap" Width="300"
+					   TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+					<PasswordBox x:Name="EnterPassBox" Margin="4" Width="250" PlaceholderText="Обязательное поле"/>
+					<TextBlock Text="Повторите пароль доступа " Margin="0,15,0,10"
+							   TextWrapping="Wrap" Width="300"
+							   TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+					<PasswordBox x:Name="EnterPassRepeatBox" Margin="4" Width="250" PlaceholderText="Обязательное поле"/>
+                    <CheckBox x:Name="UseWindowsHello" Content="Использовать отпечаток пальца"
+                              Margin="0,20,0,20" HorizontalAlignment="Center" Checked="UseWindowsHello_Checked"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Введите мастер-ключ" Margin="0,0,0,10"
+					   TextWrapping="Wrap" Width="300"
+					   TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+					<TextBox x:Name="MasterKeyBox" Margin="4" Width="250" PlaceholderText="Обязательное поле"/>
+                    <TextBlock Text="Повторите мастер-ключ" Margin="0,15,0,10"
+					   TextWrapping="Wrap" Width="300"
+					   TextAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+					<TextBox x:Name="MasterKeyReapeatBox" Margin="4" Width="250" PlaceholderText="Обязательное поле"/>
+					<Button x:Name="PassportSignInButton" Content="Начать" Background="{StaticResource SystemAccentColor}"
+							 Width="80" HorizontalAlignment="Center" Margin="0,20" Click="SignInButton_Click"/>
+                </StackPanel>
+            </StackPanel>
+		</StackPanel>
+	</Grid>
+</Page>
