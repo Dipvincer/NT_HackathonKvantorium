@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -27,9 +28,25 @@ namespace Password.Views
             this.InitializeComponent();
         }
 
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Secret));
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var sp = new StackPanel() { Orientation = Orientation.Horizontal };
+            sp.Tag = this.PassBox.Password;
+            var lg = new TextBox() { IsReadOnly = true, Margin = new Thickness(10), MinWidth = 100 };
+            lg.Text = this.LoginBox.Text;
+            var ps = new PasswordBox() { Margin = new Thickness(10), MinWidth = 100 };
+            ps.Password = this.PassBox.Password;
+            ps.PreviewKeyDown += (a, b) => b.Handled = true;
+            ps.Tapped += async (a, b) => await new MessageDialog("", (sender as PasswordBox).Password).ShowAsync();
+            sp.Children.Add(lg);
+            sp.Children.Add(ps);
+            this.PasswordsView.Items.Add(sp);
         }
     }
 }

@@ -7,6 +7,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -22,6 +23,10 @@ namespace Password
     /// </summary>
     sealed partial class App : Application
     {
+        public static string PathToSave = "data.dat";
+        public static ApplicationDataContainer LocalSettings = ApplicationData.Current.LocalSettings;
+		public static StorageFile SavedFile;
+
         /// <summary>
         /// Инициализирует одноэлементный объект приложения. Это первая выполняемая строка разрабатываемого
         /// кода, поэтому она является логическим эквивалентом main() или WinMain().
@@ -37,13 +42,22 @@ namespace Password
         /// например, если приложение запускается для открытия конкретного файла.
         /// </summary>
         /// <param name="e">Сведения о запросе и обработке запуска.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
-            var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-            if (localSettings.Values.Count == 0 || localSettings.Values["IsFirstLaunch"] as bool? == true)
-                localSettings.Values["IsFirstLaunch"] = true;
+            LocalSettings.Values["Passwords"] = "    \n";
+            try
+            {
+                await ApplicationData.Current.LocalFolder.CreateFileAsync(PathToSave);
+            }
+            catch (Exception)
+            {
+
+            }
+            SavedFile = await ApplicationData.Current.LocalFolder.GetFileAsync(PathToSave);
+            if (LocalSettings.Values.Count == 0 || LocalSettings.Values["IsFirstLaunch"] as bool? == true)
+                LocalSettings.Values["IsFirstLaunch"] = true;
             else
-                localSettings.Values["IsFirstLaunch"] = false;
+                LocalSettings.Values["IsFirstLaunch"] = false;
             Application.Current.Resources["SystemAccentColor"] = new Windows.UI.ViewManagement.UISettings().GetColorValue(Windows.UI.ViewManagement.UIColorType.Accent);
 
             Frame rootFrame = Window.Current.Content as Frame;

@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Password.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Management;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,8 +14,6 @@ namespace Password.Logic
 {
 	public static class SettingsManager
 	{
-		public static ApplicationDataContainer LocalSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-
 		private static string _salt = new EasClientDeviceInformation().Id.ToString(); // сюда надо сделать номер жесткого диска
 
 		public static string HashStringBCrypt(string pass)
@@ -166,26 +164,66 @@ namespace Password.Logic
 			return check;
         }
 
-		public static void SavePassword(string pass) => LocalSettings.Values["Hash"] = HashStringBCrypt(pass);
+		public static void SaveLoginPassPairs(IEnumerable<LoginPassPair> pairs)
+        {
+			int id;
+            if (!int.TryParse((App.LocalSettings.Values["Passwords"] as string).Split('\n').FirstOrDefault().Split(' ', StringSplitOptions.RemoveEmptyEntries).FirstOrDefault(), out id))
+            {
+				id = 0;
+			}
+            foreach (var pair in pairs)
+            {
+				App.LocalSettings.Values["Passwords"] = (++id).ToString() + " " + EncryptStringAES(pair.Login, GetMasterKey()) + " " + EncryptStringAES(pair.Pass, GetMasterKey()) + "\n";
+            }
+        }
 
-		public static bool CheckPassword(string pass) => LocalSettings.Values["Hash"] as string == HashStringBCrypt(pass);
+		public static void SaveLoginPassPair(LoginPassPair pair)
+        {
+			int id;
+            if (!int.TryParse((App.LocalSettings.Values["Passwords"] as string).Split('\n').FirstOrDefault().Split(' ', StringSplitOptions.RemoveEmptyEntries).FirstOrDefault(), out id))
+            {
+				id = 0;
+			}
+			App.LocalSettings.Values["Passwords"] = (++id).ToString() + " " + EncryptStringAES(pair.Login, GetMasterKey()) + " " + EncryptStringAES(pair.Pass, GetMasterKey()) + "\n";
+        }
 
-		public static void SaveMasterKey(string key) => LocalSettings.Values["MasterKey"] = EncryptStringAES(key, _salt);
+		public static int GetNextId()
+        {
+			int id;
+            if (!int.TryParse((App.LocalSettings.Values["Passwords"] as string).Split('\n').FirstOrDefault().Split(' ', StringSplitOptions.RemoveEmptyEntries).FirstOrDefault(), out id))
+            {
+				id = 0;
+			}
+			return id;
+        }
 
-		public static string GetMasterKey() => DecryptStringAES(LocalSettings.Values["MasterKey"] as string, _salt);
+		public static IEnumerable<LoginPassPair> GetAllLoginPassPairs()
+		{
+			return (App.LocalSettings.Values["Passwords"] as string).Split('\n').Select(x => new LoginPassPair(int.Parse(x.Split(' ')[0]), 
+																								DecryptStringAES(x.Split(' ')[1], GetMasterKey()),
+																								DecryptStringAES(x.Split(' ')[2], GetMasterKey())));
+		}
 
-		public static void SaveWinHelloState(bool? useWindowsHello) => LocalSettings.Values["UseWindowsHello"] = useWindowsHello;
+		public static void SavePassword(string pass) => App.LocalSettings.Values["Hash"] = HashStringBCrypt(pass);
 
-		public static bool? GetWinHelloState() => LocalSettings.Values["UseWindowsHello"] as bool?;
+		public static bool CheckPassword(string pass) => App.LocalSettings.Values["Hash"] as string == HashStringBCrypt(pass);
 
-		public static bool? IsFirstLaunch() => LocalSettings.Values["IsFirstLaunch"] as bool?;
+		public static void SaveMasterKey(string key) => App.LocalSettings.Values["MasterKey"] = EncryptStringAES(key, _salt);
 
-		public static void NotFirstLaunch() => LocalSettings.Values["IsFirstLaunch"] = false;
+		public static string GetMasterKey() => DecryptStringAES(App.LocalSettings.Values["MasterKey"] as string, _salt);
 
-		public static void SaveSecret(string secret) => LocalSettings.Values["Secret"] = secret;
+		public static void SaveWinHelloState(bool? useWindowsHello) => App.LocalSettings.Values["UseWindowsHello"] = useWindowsHello;
 
-		public static string GetSecret() => LocalSettings.Values["Secret"] as string;
+		public static bool? GetWinHelloState() => App.LocalSettings.Values["UseWindowsHello"] as bool?;
 
-		public static void ResetAll() => LocalSettings.Values["IsFirstLaunch"] = true;
+		public static bool? IsFirstLaunch() => App.LocalSettings.Values["IsFirstLaunch"] as bool?;
+
+		public static void NotFirstLaunch() => App.LocalSettings.Values["IsFirstLaunch"] = false;
+
+		public static void SaveSecret(string secret) => App.LocalSettings.Values["Secret"] = secret;
+
+		public static string GetSecret() => App.LocalSettings.Values["Secret"] as string;
+
+		public static void ResetAll() => App.LocalSettings.Values["IsFirstLaunch"] = true;
 	}
 }
