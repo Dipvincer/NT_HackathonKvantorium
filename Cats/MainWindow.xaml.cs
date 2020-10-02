@@ -52,6 +52,7 @@ namespace Cats
 
             WelcomePage.Visibility = Visibility.Hidden;
             GaleryPage.Visibility = Visibility.Hidden;
+            ArticlesPage.Visibility = Visibility.Hidden;
 
             NowPage.Text = "Личная страничка";
 
@@ -68,8 +69,26 @@ namespace Cats
 
             WelcomePage.Visibility = Visibility.Hidden;
             YourCatPage.Visibility = Visibility.Hidden;
+            ArticlesPage.Visibility = Visibility.Hidden;
 
             NowPage.Text = "Галерея";
+
+            StoryboardStart("SlideMenuClose");
+
+            await Task.Delay(500);
+            DarkMask.Visibility = Visibility.Hidden;
+        }
+
+        private async void ArticlesButton_Click(object sender, RoutedEventArgs e)
+        {
+            MenuButton.Visibility = Visibility.Visible;
+            ArticlesPage.Visibility = Visibility.Visible;
+
+            WelcomePage.Visibility = Visibility.Hidden;
+            YourCatPage.Visibility = Visibility.Hidden;
+            GaleryPage.Visibility = Visibility.Hidden;
+
+            NowPage.Text = "Статьи";
 
             StoryboardStart("SlideMenuClose");
 

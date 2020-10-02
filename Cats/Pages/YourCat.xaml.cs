@@ -113,8 +113,7 @@ namespace Cats.Pages
 
                 CommentsField.Children.Add(grid);
 
-                InputField.Text = "Написать сообщение";
-                InputField.Opacity = 0.5;
+                InputField.Text = string.Empty;                
             }
             else if (string.IsNullOrWhiteSpace(InputField.Text))
             {

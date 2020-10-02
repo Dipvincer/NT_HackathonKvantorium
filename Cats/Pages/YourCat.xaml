@@ -47,81 +47,83 @@
             <Button x:Name="Send" Click="Send_Click" HorizontalAlignment="Right" Margin="0 0 10 0" VerticalAlignment="Center" Width="50" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#d4d4d4">
                 <md:PackIcon Kind="Send" Width="25" Height="25" Margin="-5 0 0 0"/>
             </Button>            
-        </Grid>        
-        
-        <StackPanel x:Name="CommentsField" Grid.Row="1" Grid.Column="1">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
+        </Grid>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition Height="50"/>
-                </Grid.RowDefinitions>
+        <ScrollViewer Margin="0 0 0 60" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Grid.Row="1" Grid.Column="1">
+            <StackPanel x:Name="CommentsField">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
 
-                <Ellipse Width="70" Height="70" Grid.Column="0" Grid.RowSpan="2">
-                    <Ellipse.Fill>
-                        <ImageBrush ImageSource="https://uznayvse.ru/images/celebs/elon-mask_medium.jpg" Stretch="UniformToFill"/>
-                    </Ellipse.Fill>
-                </Ellipse>
-                
-                <TextBlock Grid.Column="1" Style="{StaticResource AboutCat}">Илон Маск</TextBlock>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
 
-                <TextBlock Grid.Column="1" Grid.Row="1" Style="{StaticResource AboutCat}" Foreground="#2b2b2b" FontSize="14">
+                    <Ellipse Width="70" Height="70" Grid.Column="0" Grid.RowSpan="2">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="https://uznayvse.ru/images/celebs/elon-mask_medium.jpg" Stretch="UniformToFill"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+
+                    <TextBlock Grid.Column="1" Style="{StaticResource AboutCat}">Илон Маск</TextBlock>
+
+                    <TextBlock Grid.Column="1" Grid.Row="1" Style="{StaticResource AboutCat}" Foreground="#2b2b2b" FontSize="14">
                     Офигенный кот. У меня был такой. Очень красивый и забавный, люблю таких.
-                </TextBlock>
-            </Grid>
+                    </TextBlock>
+                </Grid>
 
-            <Grid Margin="0 10 0 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
+                <Grid Margin="0 10 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition Height="50"/>
-                </Grid.RowDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
 
-                <Ellipse Width="70" Height="70" Grid.Column="0" Grid.RowSpan="2">
-                    <Ellipse.Fill>
-                        <ImageBrush ImageSource="https://cs11.pikabu.ru/post_img/big/2019/08/19/4/1566190808158226752.jpg" Stretch="UniformToFill"/>
-                    </Ellipse.Fill>
-                </Ellipse>
+                    <Ellipse Width="70" Height="70" Grid.Column="0" Grid.RowSpan="2">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="https://cs11.pikabu.ru/post_img/big/2019/08/19/4/1566190808158226752.jpg" Stretch="UniformToFill"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
 
-                <TextBlock Grid.Column="1" Style="{StaticResource AboutCat}">Марк Цукерберг</TextBlock>
+                    <TextBlock Grid.Column="1" Style="{StaticResource AboutCat}">Марк Цукерберг</TextBlock>
 
-                <TextBlock Grid.Column="1" Grid.Row="1" Style="{StaticResource AboutCat}" Foreground="#2b2b2b" FontSize="14">
+                    <TextBlock Grid.Column="1" Grid.Row="1" Style="{StaticResource AboutCat}" Foreground="#2b2b2b" FontSize="14">
                     Хахах. Классный кот!!! Имя еще такое необычное. Хочу такого себе. Я очень люблю котов.
-                </TextBlock>
-            </Grid>
+                    </TextBlock>
+                </Grid>
 
-            <Grid Margin="0 10 0 0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
+                <Grid Margin="0 10 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition Height="50"/>
-                </Grid.RowDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
 
-                <Ellipse Width="70" Height="70" Grid.Column="0" Grid.RowSpan="2">
-                    <Ellipse.Fill>
-                        <ImageBrush ImageSource="https://cdn.forbes.ru/files/presets/900_566/profile/jeff_bezos.jpg__1583666210__84763__vid667939e.jpg" Stretch="UniformToFill"/>
-                    </Ellipse.Fill>
-                </Ellipse>
+                    <Ellipse Width="70" Height="70" Grid.Column="0" Grid.RowSpan="2">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="https://cdn.forbes.ru/files/presets/900_566/profile/jeff_bezos.jpg__1583666210__84763__vid667939e.jpg" Stretch="UniformToFill"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
 
-                <TextBlock Grid.Column="1" Style="{StaticResource AboutCat}">Джефф Безос</TextBlock>
+                    <TextBlock Grid.Column="1" Style="{StaticResource AboutCat}">Джефф Безос</TextBlock>
 
-                <TextBlock Grid.Column="1" Grid.Row="1" TextWrapping="WrapWithOverflow" Style="{StaticResource AboutCat}" Foreground="#2b2b2b" FontSize="14">
+                    <TextBlock Grid.Column="1" Grid.Row="1" TextWrapping="WrapWithOverflow" Style="{StaticResource AboutCat}" Foreground="#2b2b2b" FontSize="14">
                     Сибирские коты очень специфичны. У них длинная шерсть и поэтому их надо довольно часто вычесывать. Но выглядит шикарно!
-                </TextBlock>
-            </Grid>
-        </StackPanel>
+                    </TextBlock>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
         
         
 
@@ -149,7 +151,7 @@
                 <TextBlock x:Name="CatsAge" Style="{StaticResource AboutCat}" Foreground="#2b2b2b"/>
             </StackPanel>
 
-            <TextBlock Style="{StaticResource AboutCat}" HorizontalAlignment="Center" Foreground="#a34b45">Описание:</TextBlock>
+            <TextBlock Style="{StaticResource AboutCat}" HorizontalAlignment="Left" Foreground="#a34b45">Описание:</TextBlock>
             <TextBlock x:Name="CatsDescriptions" Style="{StaticResource AboutCat}" TextWrapping="Wrap" Foreground="#2b2b2b"/>
         </StackPanel>
     </Grid>
