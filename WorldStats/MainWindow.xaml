@@ -4,9 +4,30 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WorldStats"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        xmlns:pages="clr-namespace:WorldStats.Pages"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="800" Width="1200">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>                        
+        </Grid.RowDefinitions>
+
+        <Button x:Name="ChangeButton" Click="ChangeButton_Click" Background="{x:Null}" Foreground="{x:Null}" Width="300">
+            <Label x:Name="Headline" Foreground="#2b2b2b" FontFamily="Montserrat" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center">
+                Мировое население
+            </Label>
+        </Button>
+
+        <TextBlock Name="Welcome" TextAlignment="Center" Grid.Row="1" Foreground="#2b2b2b" FontFamily="Montserrat" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center">
+            Добро пожаловать в Анализатор Мирового населения и Статистики Коронавируса.
+            <LineBreak/>
+            Чтобы продолжить нажмите на кнопку выше.
+        </TextBlock>
+
+        <pages:Koronavirus x:Name="Koronavirus" Grid.Row="1" Visibility="Hidden"></pages:Koronavirus>
+        <pages:Country x:Name="RegionPopulation" Grid.Row="1" Visibility="Hidden"></pages:Country>
 
     </Grid>
 </Window>
