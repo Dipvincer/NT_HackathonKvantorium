@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LiveCharts;
+using LiveCharts.Wpf;
 
 namespace WorldStats
 {
@@ -23,6 +25,26 @@ namespace WorldStats
         public MainWindow()
         {
             InitializeComponent();
+
+        }
+
+        private void ChangeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (RegionPopulation.Visibility == Visibility.Hidden)
+            {
+                Welcome.Visibility = Visibility.Hidden;
+                Koronavirus.Visibility = Visibility.Hidden;
+                RegionPopulation.Visibility = Visibility.Visible;
+
+                Headline.Content = "Коронавирус";
+            }
+            else if (RegionPopulation.Visibility == Visibility.Visible)
+            {
+                RegionPopulation.Visibility = Visibility.Hidden;
+                Koronavirus.Visibility = Visibility.Visible;
+
+                Headline.Content = "Мировое население";
+            }
         }
     }
 }
